@@ -1,16 +1,26 @@
+"use client";
+import { Sidebar } from "@/components/Sidebar";
 import { moduleSystem } from "@/lib/modules";
+import { useState } from "react";
 
 export default function Homepage() {
-  const content = `
-       Welcome to our site!
-       [module name="hello" name="solo"]
-     `;
+  const [content, setContent] = useState("");
+
+  const handleShortcodeChange = (shortcode: string) => {
+    setContent(shortcode);
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-3xl font-black my-6">MODULE SYSTEM</h1>
+    <div className="flex">
+      {/* Sidebar */}
+      <Sidebar onShortcodeChange={handleShortcodeChange} />
 
-      <div>{moduleSystem.render(content)}</div>
+      {/* Main Content */}
+      <div className="flex-1 p-4">
+        <div className="w-full mt-10 flex justify-center items-center">
+          {moduleSystem.render(content)}
+        </div>
+      </div>
     </div>
   );
 }

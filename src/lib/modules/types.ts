@@ -2,6 +2,11 @@ import { ComponentType } from "react";
 
 export interface ModuleAttributes {
   [key: string]: string | number | boolean | undefined;
+  type?: "success" | "error" | "warning" | "info";
+  variant?: "primary" | "secondary" | "outline";
+  message?: string;
+  label?: string;
+  name?: string;
 }
 
 export interface ModuleDefinition {
